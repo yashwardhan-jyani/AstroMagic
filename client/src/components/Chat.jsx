@@ -1,10 +1,10 @@
-import useChat from "../custom hooks/useChat";
-import { useSelector } from "react-redux";
-import { ChatCardContainer } from "./CardContainer";
-import ShimmerList from "../shimmer/ShimmerList";
+// import useChat from "../custom hooks/useChat";
+// import { useSelector } from "react-redux";
+// import { ChatCardContainer } from "./CardContainer";
+// import ShimmerList from "../shimmer/ShimmerList";
 import { useState } from "react";
-import lang from "../utils/langConstants";
-import Chatbot from "./Chatbot";
+// import lang from "../utils/langConstants";
+// import Chatbot from "./Chatbot";
 import bg from "../image/bg1.jpg"
 import Error from "./Error";
 
@@ -13,13 +13,13 @@ const Chat = () => {
     const [search, setSearch] = useState(""); 
     const [mainchatList, setMainchatList] = useState(null); 
 
-    const Langkey = useSelector(store => store.configApp.lang)
-    const Bot = useSelector(store => store.configApp.Bot)
+    // const Langkey = useSelector(store => store.configApp.lang)
+    // const Bot = useSelector(store => store.configApp.Bot)
 
     
-    useChat()
-    const chatList = useSelector(store => store.astro.chatList)
-    if (!chatList) return <ShimmerList/>
+    // useChat()
+    // const chatList = useSelector(store => store.astro.chatList)
+    // if (!chatList) return <ShimmerList/>
    
 
 
@@ -37,7 +37,7 @@ const Chat = () => {
 
     return (
         <div  className="relative w-12/12 ">
-             { Bot && <Chatbot/>}
+             {/* { Bot && <Chatbot/>} */}
             <img alt="bg" className="h-screen w-full md:scale-100 scale-x-[3] brightness-50 fixed top-0 left-0 -z-40" src={bg}></img>
            <div className="lg:pt-6 pt-3 px-4 lg:px-20 md:px-16  flex flex-col justify-center  items-start">
             <div className="w-full flex lg:flex-row flex-col justify-between mt-20 lg:mb-4  mb-3 items-start lg:items-center">
@@ -55,7 +55,8 @@ const Chat = () => {
             </div>
 
             <div className="flex w-full whitespace-nowrap overflow-x-scroll  no-scrollbar justify-start items-center pt-0.5 lg:pt-2 gap-2 lg:gap-4 flex-row">
-                    <span className={btnCSS}><i className="ri-filter-2-line pr-1"></i>{lang[Langkey].filter}</span>
+                    {/* <span className={btnCSS}><i className="ri-filter-2-line pr-1"></i>{lang[Langkey].filter}</span> */}
+                    <span className={btnCSS}><i className="ri-filter-2-line pr-1"></i>{Filter}</span>
                     <button className={btnCSS} onClick={()=>{
                         setMainchatList(chatList)}
                     }>{lang[Langkey].all}</button>
