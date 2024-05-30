@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../image/Logo text.png";
 // import { onAuthStateChanged, signOut } from "firebase/auth";
 // import { auth } from "../utils/firebase";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import { addUser, removeUser } from "../store/userSlice";
 // import { toast, Bounce } from "react-toastify";
@@ -93,8 +93,9 @@ const Header = () => {
           <Link to={"/call"} className={liCSS}>
             {" "}
             {/* <span >{lang[Langkey].CALL}</span> */}
-            Call
+            Horoscope
           </Link>
+          
           {/* {!user ? (
             <span onClick={handleform} className={liCSS}>
               {lang[Langkey].LOGIN}
@@ -105,10 +106,11 @@ const Header = () => {
             </span>
           )} */}
 
-          <Link to={"/following"} className={liCSS}>
-            {/* <span>{lang[Langkey].FOLLOWING}</span> */}
+          {/* <Link to={"/following"} className={liCSS}>
+            <span>{lang[Langkey].FOLLOWING}</span>
             FOLLOWING
-          </Link>
+          </Link> */}
+          
           
           {/* <Link to={"/about"} className={liCSS}>
             <span>{lang[Langkey].ABOUT}</span>
@@ -136,11 +138,11 @@ const Header = () => {
 
 
         <div>
-          <select
+          {/* <select
             className="lg:pl-1 pl-0.5 cursor-pointer lg:text-base text-sm py-1 lg:py-1.5 lg:mx-2 mx-0.5 text-purple-200 bg-purple-800 rounded-md bg-opacity-80"
-            // onChange={handleLang}
+            onChange={handleLang}
           >
-            {/* {MULTI_LANG.map((lang) => (
+            {MULTI_LANG.map((lang) => (
               <option
                 className=""
                 key={lang?.identifier}
@@ -148,13 +150,18 @@ const Header = () => {
               >
                 {lang?.name}
               </option>
-            ))} */}
+            ))}
              <option
                 className=""
                 key="English"
                 value="English"
               >English</option>
-          </select>
+          </select> */}
+           {/* <button className="lg:px-5 2xl:px-8 2xl:py-3 px-3 hover:bg-transparent border-2 rounded-full hover:shadow-inner   shadow-purple-950  ring-purple-100 shadow-lg hover:shadow-purple-700 border-purple-700 transition-all lg:my-2 my-1 py-1 lg:py-1.5  text-white bg-purple-700  uppercase tracking-wide font-semibold 2xl:text-lg text-sm lg:text-lg"> */}
+           <button className="lg:px-5 2xl:px-8 2xl:py-3 px-3 hover:bg-transparent border-2 rounded-full hover:shadow-inner   shadow-purple-950  ring-purple-100 shadow-lg hover:shadow-purple-700 border-purple-700 transition-all lg:my-2 my-1 py-1 lg:py-1.5  text-white bg-purple-700  uppercase tracking-wide font-semibold 2xl:text-sm text-sm lg:text-sm">
+              {/* {lang[Langkey].astroBot} */}
+            Login
+            </button>
         </div>
       </div>
       {/* {form && (
