@@ -5,8 +5,9 @@ import handbg from "../image/hand_bg.png";
 import hand from "../image/hand.png";
 // import { addBot } from "../store/configAppSlice";
 // import { Link } from "react-router-dom";
+import React, { useRef } from 'react';
 
-const Explore = () => {
+const Explore = ({handleScroll}) => {
   // const Langkey = useSelector((store) => store.configApp.lang);
   // const dispatch = useDispatch()
 
@@ -33,7 +34,7 @@ const Explore = () => {
           </span>
           <span className="lg:py-2 2xl:text-2xl  text-[10px] lg:pt-2 pt-4 lg:text-base tracking-wider  font-normal w-[80%] lg:items-start lg:text-left items-center flex text-center italic text-zinc-300">
             {/* {lang[Langkey].loginDescription} */}
-            Connect with astrologers, chat, and get personalized horoscopes with Astrobot. Unlock insights with AstroKundli
+            Connect with astrologers, chat, and get personalized horoscopes  
           </span>
           {/* <div className="flex flex-row lg:pt-0 pt-3 gap-3">
             <button className="lg:px-5 2xl:px-8 2xl:py-3 px-3 hover:bg-transparent border-2 rounded-full hover:shadow-inner   shadow-purple-950  ring-purple-100 shadow-lg hover:shadow-purple-700 border-purple-700 transition-all lg:my-2 my-1 py-1 lg:py-1.5  text-white bg-purple-700  uppercase tracking-wide font-semibold 2xl:text-lg text-sm lg:text-lg" onClick={handlebot}>
@@ -44,9 +45,9 @@ const Explore = () => {
             </button></Link> 
           </div> */}
            <div className="flex flex-row lg:pt-0 pt-3 gap-3">
-            <button className="lg:px-5 2xl:px-8 2xl:py-3 px-3 hover:bg-transparent border-2 rounded-full hover:shadow-inner   shadow-purple-950  ring-purple-100 shadow-lg hover:shadow-purple-700 border-purple-700 transition-all lg:my-2 my-1 py-1 lg:py-1.5  text-white bg-purple-700  uppercase tracking-wide font-semibold 2xl:text-lg text-sm lg:text-lg">
+            <button className="lg:px-5 2xl:px-8 2xl:py-3 px-3 hover:bg-transparent border-2 rounded-full hover:shadow-inner   shadow-purple-950  ring-purple-100 shadow-lg hover:shadow-purple-700 border-purple-700 transition-all lg:my-2 my-1 py-1 lg:py-1.5  text-white bg-purple-700  uppercase tracking-wide font-semibold 2xl:text-lg text-sm lg:text-lg" onClick={handleScroll}>
               {/* {lang[Langkey].astroBot} */}
-              Explore More
+              Why Astrology?
             </button>
           
           </div>
@@ -65,7 +66,7 @@ const Explore = () => {
         </div>
       </div>
 
-      <ZodiacContainer />
+      <ZodiacContainer/>
     </div>
   );
 };
