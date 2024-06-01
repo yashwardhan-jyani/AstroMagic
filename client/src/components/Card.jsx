@@ -1,4 +1,4 @@
-import {  PROFILE_IMG } from "../utils/constants";
+// import { PROFILE_BG, PROFILE_IMG } from "../utils/constants";
 import ShimmerList from "../shimmer/ShimmerList";
 
 import lang from "../utils/langConstants";
@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const Card = ({ info }) => {
 
     const Langkey = useSelector(store => store.configApp.lang)
-
+    const PROFILE_IMG = "http://aws.astrotalk.com/consultant_pic/";
   if (!info) {
     return <ShimmerList />
   }
@@ -25,6 +25,7 @@ const Card = ({ info }) => {
           src={PROFILE_IMG + info?.picId}
           alt="profile"
         ></img>
+        
 </div>
         <div>
           {info?.rating > 4.9 ?

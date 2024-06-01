@@ -6,8 +6,9 @@ import Chat from "./Chat";
 import Header from "./Header";
 // import Following from "./Following";
 // import Chatbot from "./Chatbot";
-// import AstroKundli from "./AstroKundli";
-// import LoginForm from "./LoginForm";
+import AstroKundli from "./AstroKundli";
+import LoginForm from "./LoginForm";
+import LoginPage from "./LoginPage";
 // import Horoscope from "./Horoscope";
 // import FootIcons from "./FootIcons";
 // import Loading from "../utils/Loading";
@@ -16,6 +17,7 @@ import Header from "./Header";
 import About from "./About";
 import Error from "./Error";
 import Footer from "./Footer";
+import Chatbothoro from "./Chatbothoro";
 
 const Body = () => {
   const appLayout = createBrowserRouter([
@@ -34,10 +36,14 @@ const Body = () => {
           path: "/",
           element: <Hero />,
         },
-        // {
-        //   path: "/chat",
-        //   element: <Chat />,
-        // },
+        {
+          path: "/chat",
+          element: <Chat />,
+        },
+        {
+          path: "/horo",
+          element: <Chatbothoro/>,
+        },
         // {
         //   path: "/call",
         //   element: <Call />,
@@ -54,10 +60,10 @@ const Body = () => {
         //   path: "/chatbot",
         //   element: <Chatbot />,
         // },
-        // {
-        //   path: "/kundligpt",
-        //   element: <AstroKundli />,
-        // },
+        {
+          path: "/kundligpt",
+          element: <AstroKundli />,
+        },
         // {
         //   path: "/horoscope/:id",
         //   element: <Horoscope />,
@@ -72,7 +78,7 @@ const Body = () => {
         // },
         // {
         //   path: "/login",
-        //   element: <LoginForm />,
+        //   element: <LoginPage/>,
         // },
         {
           path: "/about",

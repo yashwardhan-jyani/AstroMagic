@@ -1,41 +1,45 @@
 import React from "react";
 import LoginForm from "./LoginForm";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast, Bounce } from "react-toastify";
+import { addForm } from "../store/configAppSlice";
+// import { useNavigate } from "react-router-dom";
+// import { toast, Bounce } from "react-toastify";
 import Header from "./Header";
-import lang from "../utils/langConstants";
+import Hero from "./Hero";
+// import lang from "../utils/langConstants";
 import bg from "../image/bg1.jpg";
 import hand from "../image/hand.png"
 import handbg from "../image/hand_bg.png"
 
 const LoginPage = () => {
-  const user = useSelector((store) => store.user);
-  const navigate = useNavigate();
-  const Langkey = useSelector((store) => store.configApp.lang);
-
-  const handleform = () => {
-    {
-      user
-        ? navigate("/")
-        : toast.warn("Please Login", {
-            position: "top-center",
-            autoClose: 1000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-          });
-    }
-  };
+  // const user = useSelector((store) => store.user);
+  // const navigate = useNavigate();
+  // const Langkey = useSelector((store) => store.configApp.lang);
+  const form = useSelector((store) => store.configApp.form);
+  // const handleform = () => {
+  //   {
+  //     user
+  //       ? navigate("/")
+  //       : toast.warn("Please Login", {
+  //           position: "top-center",
+  //           autoClose: 1000,
+  //           hideProgressBar: true,
+  //           closeOnClick: true,
+  //           pauseOnHover: false,
+  //           draggable: true,
+  //           progress: undefined,
+  //           theme: "dark",
+  //           transition: Bounce,
+  //         });
+  //   }
+  // };
 
   return (
     <>
       <Header />
-      <div className="flex lg:flex-row flex-col  w-12/12 h-screen relative justify-start sm:px-20 lg:px-28 lg:pt-20 pt-48 items-center bg-cover bg-center bg-fixed overflow-hidden">
+      {form && <LoginForm/>}
+      <Hero/>
+      {/* <div className="flex lg:flex-row flex-col  w-12/12 h-screen relative justify-start sm:px-20 lg:px-28 lg:pt-20 pt-48 items-center bg-cover bg-center bg-fixed overflow-hidden">
         <img
           className="hidden md:block absolute h-screen w-full brightness-90 top-0 left-0 -z-20 "
           src={bg}
@@ -83,7 +87,8 @@ const LoginPage = () => {
           ></img>
           <LoginForm />
         </div>
-      </div>
+      </div> */}
+     
     </>
   );
 };

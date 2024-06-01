@@ -4,7 +4,7 @@ import ShimmerList from "../shimmer/ShimmerList";
 import useCall from "../custom hooks/useCall";
 import { useState } from "react";
 import lang from "../utils/langConstants";
-import Chatbot from "./Chatbot";
+// import Chatbot from "./Chatbot";
 import bg from "../image/bg1.jpg";
 
 const Call = () => {
@@ -12,7 +12,7 @@ const Call = () => {
   const [mainCallList, setMaincallList] = useState(null);
 
   const Langkey = useSelector((store) => store.configApp.lang);
-  const Bot = useSelector((store) => store.configApp.Bot);
+  // const Bot = useSelector((store) => store.configApp.Bot);
 
   useCall();
   const callList = useSelector((store) => store.astro.callList);
@@ -33,7 +33,7 @@ const Call = () => {
     "lg:text-base active:bg-purple-900 focus:bg-purple-800 active:bg-purple-800 active:text-purple-100 bg-purple-600 bg-opacity-10 hover:bg-purple-800   transition-all text-sm border px-4  lg:px-4 py-2 lg:py-1.5   border-purple-600 text-purple-300 font-normal rounded-3xl sm:rounded-full cursor-pointer";
   return (
     <div className="relative w-12/12  ">
-      {Bot && <Chatbot />}
+      {/* {Bot && <Chatbot />} */}
       <img
         alt="bg"
         className="h-screen w-full brightness-50 md:scale-100 scale-x-[3] fixed top-0 left-0 -z-40"
