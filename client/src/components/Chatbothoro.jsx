@@ -8,7 +8,7 @@ import logo from "../image/Logo.png"
 import lang from "../utils/langConstants";
 import Groq from "groq-sdk";
 
-const Chatbot = () => {
+const Chatbothoro = () => {
   const input = useRef();
 
   // const [apiLimit, setapiLimit] = useState(1);
@@ -17,7 +17,7 @@ const Chatbot = () => {
   const form = useSelector((store) => store.configApp.form);
   const dispatch = useDispatch();
 
-  const [result, setresult] = useState(["AstroBot: Hi"]);
+  const [result, setresult] = useState(["StellarGuide: Hi"]);
 
   const handlebot = () => {
     dispatch(addBot());
@@ -28,53 +28,11 @@ const Chatbot = () => {
 });
   const handleSearch = async () => {
     
-    // if (!user) {
-    //   toast.error("Please Login to Continue", {
-    //     position: "top-right",
-    //     autoClose: 1200,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: false,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "dark",
-    //     transition: Bounce,
-    //   });
-    //   dispatch(addBot());
-    //   dispatch(addForm());
-    //   return;
-    // }
-    // if (apiLimit > 6) {
-    //   // dispatch(addLimit(false));
-    //   // toast.error("Please come tommorow Api limit excedd", {
-    //   //   position: "top-right",
-    //   //   autoClose: 1200,
-    //   //   hideProgressBar: false,
-    //   //   closeOnClick: true,
-    //   //   pauseOnHover: false,
-    //   //   draggable: true,
-    //   //   progress: undefined,
-    //   //   theme: "dark",
-    //   //   transition: Bounce,
-    //   // });
-    //   return;
-    // }
-
-    // const gptSearch = CHAT_BOT + input.current.value + `?`; 
-
-    // const data = await openai.chat.completions.create({
-    //   messages: [{ role: "user", content: gptSearch }],
-    //   model: "gpt-3.5-turbo",
-    // });
-    // const Responce = data?.choices?.[0]?.message?.content;
-    // console.log(data)
-    
-  
     const data = await groq.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: "answer in such a way that you are god or very wise person or an astrologer who has deep knowledge of universe and starts and give answers in a very positive way\n"
+          content: "answer in such a way that you are very wise astrologer and tell very positive horoscope by asking date of birth  and if user asks anything other than horoscope tell him to go to the chat section\n"
         },
           {
               role: "user",
@@ -83,30 +41,29 @@ const Chatbot = () => {
       ],
       model: "llama3-8b-8192"
   });
-  console.log("starting");
-   console.log(data);
+
 const Responce = data?.choices?.[0]?.message?.content;
     setresult([
       ...result,
       "You: " + input.current.value,
-      "AstroBot: " + Responce,
+      "StellarGuide: " + Responce,
     ]);
     input.current.value = "";
 
-    // setapiLimit(apiLimit + 1);
   };
 
 
   const LangKey = useSelector(store => store.configApp.lang)
 
   return (
-    <div className="lg:pt-20 fixed w-full top-0 z-20 lg:mb-0 mb:20 pt-[20%] h-screen flex justify-center items-start  px-2 lg:px-16  bg-zinc-950 bg-opacity-85 w-12/12">
+ 
+    <div className="lg:pt-20 fixed w-full top-0 z-20 lg:mb-0 mb:20 pt-[20%] h-screen flex justify-center items-start  px-2 lg:px-16  bg-zinc-950 bg-opacity-100 w-12/12">
       <div className="lg:w-[45%] w-full rounded-xl overflow-hidden relative h-[80vh] lg:h-[80vh]">
         <div className="w-full flex flex-row h-[8vh] lg:h-[12vh] justify-between items-center bg-opacity-95 bg-purple-700 py-0.5 lg:py-4 px-4 lg:px-2">
           
           <div className="flex justify-start items-center">
             <img className="xl:w-16 w-10 lg:w-14" src={logo} alt="logo"></img>
-            <span className="lg:text-2xl text-purple-200 font-semibold uppercase xl:text-2xl text-xl">{lang[LangKey].astroBot}</span>
+            <span className="lg:text-2xl text-purple-200 font-semibold  xl:text-2xl text-xl"> StellarGuide-AI Horoscope</span>
           </div>
 
 
@@ -135,7 +92,7 @@ const Responce = data?.choices?.[0]?.message?.content;
             <input
               className="w-full py-2 placeholder:font-normal text-purple-900 font-medium  outline-none px-5 text-base lg:text-lg rounded-full"
               type="text"
-              placeholder="Ask anything you want"
+              placeholder="Ask Horoscope"
               ref={input}
             ></input>
             <button
@@ -151,4 +108,4 @@ const Responce = data?.choices?.[0]?.message?.content;
   );
 };
 
-export default Chatbot;
+export default Chatbothoro;

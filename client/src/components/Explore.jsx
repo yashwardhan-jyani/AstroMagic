@@ -52,7 +52,7 @@ const Explore = ({handleScroll}) => {
           
           </div>
         </div>
-        <div className="flex justify-center h-[35vh] items-center lg:pt-0 lg:w-6/12 lg:h-screen">
+        <div className="relative flex justify-center h-[35vh] items-center lg:pt-0 lg:w-6/12 lg:h-screen">
           <img
             className="opacity-90 lg:w-[45%] w-[30%] z-10"
             src={hand}

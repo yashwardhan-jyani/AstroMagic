@@ -1,4 +1,4 @@
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Explore from "./Explore";
 import { useEffect, useState } from "react";
 import TopAstro from "./TopAstro";
@@ -7,12 +7,14 @@ import TopAstro from "./TopAstro";
 import bg from "../image/bg1.jpg";
 import Why from "./Why";
 // import Coming from "./Coming";
+import LoginForm from "./LoginForm";
 import logo from "../image/Logo.png"
 // import { addBot } from "../store/configAppSlice";
 import React, { useRef } from 'react';
 const Hero = () => {
+  const form = useSelector((store) => store.configApp.form);
   const [topAstro, settopAstro] = useState();
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // const Bot = useSelector((store) => store.configApp.Bot);
 
@@ -27,7 +29,8 @@ const Hero = () => {
     );
     const jsonn = await data.json();
     settopAstro(jsonn?.content);
-    console.log(jsonn.content);}
+    // console.log(jsonn.content);
+  }
     catch (e){
       console.log("there is something wrong brdr");
     }
@@ -43,6 +46,7 @@ const Hero = () => {
   // }
 
   return (
+    <> {form && <LoginForm/>}
     <div className="w-12/12  relative lg:px-0 2xl:px-44">
       <img
         alt="bg"
@@ -59,6 +63,7 @@ const Hero = () => {
         <img src={logo} alt="logo" className="w-24 cursor-pointer" onClick={handleBot}></img>
   </div> */}
     </div>
+    </>
   );
 };
 export default Hero;

@@ -1,20 +1,21 @@
 import React, { useRef, useState } from "react";
-import { kundlicheck } from "../utils/validate";
-import openai from "../utils/openai";
-import { ASTRO_KUNDLI_PROMPT, GPT_LANG } from "../utils/constants";
+// import { kundlicheck } from "../utils/validate";
+// import openai from "../utils/openai";
+// import { ASTRO_KUNDLI_PROMPT, GPT_LANG } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { Bounce, toast } from "react-toastify";
-import { addForm } from "../store/configAppSlice";
+// import { Bounce, toast } from "react-toastify";
+// import { addForm } from "../store/configAppSlice";
 import Click from "../image/Click.jpeg";
-import Chatbot from "./Chatbot";
+// import Chatbot from "./Chatbot";
 import bg from "../image/bg1.jpg";
 import kundli from "../image/kundli rishi.webp";
 import handbg from "../image/hand_bg.png";
-import lang from "../utils/langConstants";
-
+// import lang from "../utils/langConstants";
+import LoginForm from "./LoginForm";
+import TableComponent from "./TableComponent";
 const AstroKundli = () => {
   const user = useSelector((store) => store.user);
-  const Bot = useSelector((store) => store.configApp.Bot);
+  // const Bot = useSelector((store) => store.configApp.Bot);
   const dispatch = useDispatch();
 
   const name = useRef();
@@ -24,77 +25,78 @@ const AstroKundli = () => {
   const [gender, setGender] = useState();
   const [SelectedLanguage, setSelectedLanguage] = useState("English");
   const [result, setresult] = useState();
-  const LangKey = useSelector(store => store.configApp.lang)
+  // const LangKey = useSelector(store => store.configApp.lang)
+ const[data,setData]=useState({}); 
+//   const handleSearch = async () => {
+//     if (!user) {
+//       toast.error("Please Login to Continue", {
+//         position: "top-right",
+//         autoClose: 1200,
+//         hideProgressBar: false,
+//         closeOnClick: true,
+//         pauseOnHover: false,
+//         draggable: true,
+//         progress: undefined,
+//         theme: "dark",
+//         transition: Bounce,
+//       });
 
-  const handleSearch = async () => {
-    if (!user) {
-      toast.error("Please Login to Continue", {
-        position: "top-right",
-        autoClose: 1200,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
+//       dispatch(addForm());
+//       return;
+//     }
 
-      dispatch(addForm());
-      return;
-    }
+//     const error = kundlicheck(
+//       name.current.value,
+//       locality.current.value,
+//       district.current.value,
+//       time.current.value,
+//       gender
+//     );
+//     if (error) {
+//       toast.error(error, {
+//         position: "top-center",
+//         autoClose: 1200,
+//         hideProgressBar: true,
+//         closeOnClick: true,
+//         pauseOnHover: false,
+//         draggable: true,
+//         progress: undefined,
+//         theme: "dark",
+//         transition: Bounce,
+//       });
+//       return;
+//     }
 
-    const error = kundlicheck(
-      name.current.value,
-      locality.current.value,
-      district.current.value,
-      time.current.value,
-      gender
-    );
-    if (error) {
-      toast.error(error, {
-        position: "top-center",
-        autoClose: 1200,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        transition: Bounce,
-      });
-      return;
-    }
+//     const kundli =
+//       ASTRO_KUNDLI_PROMPT +
+//       `Strictly give responce in this language only` +
+//       SelectedLanguage +
+//       ` Prompt name = ` +
+//       name.current.value +
+//       ` , gender = ` +
+//       gender +
+//       `, dob = ` +
+//       time.current.value +
+//       `, locality = ` +
+//       locality.current.value +
+//       `, district = ` +
+//       district.current.value +
+//       `, state = ` +
+//       `!`;
 
-    const kundli =
-      ASTRO_KUNDLI_PROMPT +
-      `Strictly give responce in this language only` +
-      SelectedLanguage +
-      ` Prompt name = ` +
-      name.current.value +
-      ` , gender = ` +
-      gender +
-      `, dob = ` +
-      time.current.value +
-      `, locality = ` +
-      locality.current.value +
-      `, district = ` +
-      district.current.value +
-      `, state = ` +
-      `!`;
+//     const data = await openai.chat.completions.create({
+//       messages: [{ role: "user", content: kundli }],
+//       model: "gpt-3.5-turbo",
+//     });
+//     setresult(data?.choices?.[0]?.message?.content);
 
-    const data = await openai.chat.completions.create({
-      messages: [{ role: "user", content: kundli }],
-      model: "gpt-3.5-turbo",
-    });
-    setresult(data?.choices?.[0]?.message?.content);
-
-    name.current.value = "";
-    locality.current.value = "";
-    district.current.value = "";
-    time.current.value = "";
-    setGender("");
-  };
+//     name.current.value = "";
+//     locality.current.value = "";
+//     district.current.value = "";
+//     time.current.value = "";
+//     setGender("");
+// };
+    const form = useSelector((store) => store.configApp.form);
 
   const inputCSS =
     "px-3 py-2  border-purple-90  z-20 bg-purple-950 bg-opacity-40 active:bg-transparent focus:bg-transparent inputCSS border border-purple-600 border-opacity-60 rounded-xl w-full text-purple-200 outline-none";
@@ -103,10 +105,56 @@ const AstroKundli = () => {
   const divCSS = "lg:w-6/12 w-[45%]  relative divCSS transition-all";
 
   const maindivCSS = "flex flex-row justify-between items-center gap-8 my-6";
+ 
 
+ const handleSearch2= async ()=>{
+  // const url = 'https://json.freeastrologyapi.com/planets';
+  const url = 'https://json.freeastrologyapi.com/planets';
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': 'qldlQSFVita0P9p7p5Cww5hFXbJI9VwW5pLyX2vb'
+    },
+    body: JSON.stringify({
+      "year": Number(time.current.value.substring(0,4)),
+      "month": Number(time.current.value.substring(5,7)),
+      "date": Number(time.current.value.substring(8,10)),
+      "hours": Number(time.current.value.substring(11,13)),
+      "minutes": Number(time.current.value.substring(14)),
+      "seconds": 0,
+      "latitude": 17.38333,
+      "longitude": 78.4666,
+      "timezone": 5.5,
+      "settings": {
+        "observation_point": "topocentric",
+        "ayanamsha": "lahiri"
+      }
+    })
+  };
+  
+  try {
+    const response = await fetch(url, options);
+    const resul = await response.text();
+    const obj = await JSON.parse(resul);
+    // console.log(obj.output[0]);
+    // Object.keys(obj.output[0]).forEach(function(key, index) {
+    //   console.log( obj.output[0][key]);
+    // });
+    const ob=obj.output[0];
+    const copiedData = { ...ob};
+    setData(copiedData);
+    setresult(resul);
+  } catch (error) {
+    console.error(error);
+  }
+ }
+
+// console.log(data);
   return (
+    <> {form && <LoginForm/>}
     <div className="relative pt-12 w-12/12 ">
-      {Bot && <Chatbot />}
+      {/* {Bot && <Chatbot />} */}
       <img
         alt="bg"
         className="h-screen  brightness-90 w-full md:scale-100 scale-x-[3] fixed top-0 left-0 -z-40"
@@ -132,7 +180,8 @@ const AstroKundli = () => {
         <div className="lg:w-8/12  w-12/12">
           <div className="mb-8 flex justify-start flex-col items-center">
             <span className="lg:text-3xl text-2xl text-center lg:font-semibold  font-[600] text-purple-300 pb-1.5 lg:pb-2 tracking-wider opacity-90 lg:tracking-normal">
-              {lang[LangKey].getAstroInsights}
+              {/* {lang[LangKey].getAstroInsights} */}
+              Get Astro Insights
             </span>
             <img
               alt="line"
@@ -143,18 +192,27 @@ const AstroKundli = () => {
           <div className={maindivCSS}>
             <div className={divCSS}>
               <input className={inputCSS} type="text" ref={name}></input>
-              <span className={spanCSS}>{lang[LangKey].inputname}</span>
+              <span className={spanCSS}>
+                {/* {lang[LangKey].inputname} */}
+                Name
+              </span>
             </div>
             <div className={divCSS}>
               <input className={inputCSS} type="text" ref={locality}></input>
-              <span className={spanCSS}>{lang[LangKey].birthPlace}</span>
+              <span className={spanCSS}>
+                {/* {lang[LangKey].birthPlace} */}
+                Birth Place
+              </span>
             </div>
           </div>
           <div className={maindivCSS}>
-            <div className={divCSS}>
+            {/* <div className={divCSS}>
               <input className={inputCSS} type="text" ref={district}></input>
-              <span className={spanCSS}>{lang[LangKey].birthDistrict}</span>
-            </div>
+              <span className={spanCSS}>
+                {lang[LangKey].birthDistrict}
+                Birth District
+              </span>
+            </div> */}
 
             <div className={divCSS}>
               <input
@@ -162,7 +220,10 @@ const AstroKundli = () => {
                 type="datetime-local"
                 ref={time}
               ></input>
-              <span className={spanCSS}>{lang[LangKey].birthTime}</span>
+              <span className={spanCSS}>
+                {/* {lang[LangKey].birthTime} */}
+                Birth Time
+                </span>
             </div>
           </div>
 
@@ -170,7 +231,8 @@ const AstroKundli = () => {
             <div className={divCSS}>
               <div className="flex lg:flex-row flex-col px-3 py-2  lg:border-purple-900 lg:border rounded-xl lg:bg-purple-950 bg-opacity-55 ">
                 <span className="lg:text-lg text-sm font-semibold text-purple-300 px-2 lg:px-4 uppercase pb-2">
-                  {lang[LangKey].gender}
+                  {/* {lang[LangKey].gender} */}
+                  Gender
                 </span>
                 <div className="w-4/12 flex flex-row">
                   <input
@@ -185,7 +247,8 @@ const AstroKundli = () => {
                     className="lg:text-base text-sm font-semibold text-purple-300 pl-2 uppercase"
                     htmlFor="male"
                   >
-                    {lang[LangKey].male}
+                    {/* {lang[LangKey].male} */}
+                    Male
                   </label>
                 </div>
                 <div className="w-4/12 flex flex-row">
@@ -200,20 +263,21 @@ const AstroKundli = () => {
                     className="lg:text-base text-sm  font-semibold text-purple-300 pl-2 uppercase"
                     htmlFor="female"
                   >
-                         {lang[LangKey].female}
+                         {/* {lang[LangKey].female} */}
+                         Female
                   
                   </label>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row lg:px-3 px-2 py-2 justify-start gap-4 lg:gap-10 lg:border-purple-900 lg:border rounded-xl lg:bg-purple-950 bg-opacity-55 w-[45%] lg:w-6/12">
-              <span className="lg:text-lg text-sm font-semibold text-purple-300 px-1 lg:px-3 uppercase">
+            {/* <div className="flex flex-col lg:flex-row lg:px-3 px-2 py-2 justify-start gap-4 lg:gap-10 lg:border-purple-900 lg:border rounded-xl lg:bg-purple-950 bg-opacity-55 w-[45%] lg:w-6/12"> */}
+              {/* <span className="lg:text-lg text-sm font-semibold text-purple-300 px-1 lg:px-3 uppercase">
                 {lang[LangKey].language}
-              </span>
-              <select
+                Language
+              </span> */}
+              {/* <select
                 className="text-purple-200 px-1 py-0.5 rounded-lg bg-purple-900 bg-opacity-90"
-                onChange={(e) => setSelectedLanguage(e.target.value)}
-              >
+                onChange={(e) => setSelectedLanguage(e.target.value)}>
                 {GPT_LANG.map((lang) => (
                   <option
                     className="text-purple-200 bg-purple-900 bg-opacity-90"
@@ -223,8 +287,8 @@ const AstroKundli = () => {
                     {lang.name}
                   </option>
                 ))}
-              </select>
-            </div>
+              </select> */}
+            {/* </div> */}
           </div>
 
           <div className="flex relative justify-center items-center w-full">
@@ -233,7 +297,7 @@ const AstroKundli = () => {
               className="absolute w-24 opacity-100 hand cursor-pointer"
               src={handbg}
               alt="handbg"
-              onClick={handleSearch}
+              onClick={handleSearch2}
             ></img>
           </div>
         </div>
@@ -253,12 +317,15 @@ const AstroKundli = () => {
           </div>
 
           <div
-            className="result-container w-full"
-            dangerouslySetInnerHTML={{ __html: result }}
-          ></div>
+            className="result-container w-full text-purple-300" 
+            // dangerouslySetInnerHTML={{ __html: result }} 
+          >
+           { data && <TableComponent data={data}/>}
+          </div>
         </div>
       )}
     </div>
+    </>
   );
 };
 
